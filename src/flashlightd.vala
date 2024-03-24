@@ -43,6 +43,7 @@ public class FlashlightServer : GLib.Object {
         sysfs_path.append("/sys/class/leds/led:switch_1/brightness");
         sysfs_path.append("/sys/class/leds/led:switch_2/brightness");
         sysfs_path.append("/sys/devices/platform/soc/soc:i2c@1/i2c-23/23-0059/s2mpb02-led/leds/torch-sec1/brightness");
+        sysfs_path.append("/sys/class/flashlight_core/flashlight/flashlight_torch");
     }
 
     public void SetBrightness(uint bvalue) throws GLib.Error {
@@ -96,7 +97,9 @@ public class FlashlightServer : GLib.Object {
                     if (file.query_exists()) {
                         try {
                             var out_stream = file.replace(null, false, FileCreateFlags.NONE, null);
-                            out_stream.write_all(Brightness.to_string().data, null);
+                            string brightnessStr = Brightness.to_string() + "\n";
+                            out_stream.write_all(brightnessStr.data, null);
+                            out_stream.flush();
                             out_stream.close();
                         } catch (Error e) {
                             // some paths might throw an error because of permissions we just want to ignore those
