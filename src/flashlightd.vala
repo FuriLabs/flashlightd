@@ -97,7 +97,7 @@ public class FlashlightServer : GLib.Object {
                     if (file.query_exists()) {
                         try {
                             var out_stream = file.replace(null, false, FileCreateFlags.NONE, null);
-                            string brightnessStr = Brightness.to_string() + "\n";
+                            string brightnessStr = (Brightness > 0 ? "1" : "0") + "\n";
                             out_stream.write_all(brightnessStr.data, null);
                             out_stream.flush();
                             out_stream.close();
