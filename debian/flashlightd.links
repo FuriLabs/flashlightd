@@ -1,1 +1,1 @@
-/usr/lib/systemd/user/org.droidian.Flashlightd.service /usr/lib/systemd/user/gnome-session.target.wants/org.droidian.Flashlightd.service
+/usr/lib/systemd/user/flashlightd.service /usr/lib/systemd/user/gnome-session.target.wants/flashlightd.service

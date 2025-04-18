@@ -1,4 +1,0 @@
-sources += files(
-	'flashlightd.vala',
-	)
-
