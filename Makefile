@@ -7,8 +7,6 @@ TARGET = flashlightd
 
 PREFIX ?= /usr
 
-all: $(TARGET)
-
 $(TARGET):
 	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET) $(LDFLAGS)
 
@@ -18,5 +16,3 @@ install: $(TARGET)
 
 clean:
 	rm -f $(TARGET)
-
-.PHONY: all install clean
